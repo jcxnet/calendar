@@ -55,8 +55,21 @@ trait ValidateForm {
 	}
 	private function validDate($date)
 	{
-		$date = date_parse_from_format("d/m/Y", $date);
-		return checkdate($date['month'], $date['day'], $date['year']);
+		if (strlen($date) > 10) {
+			return false;
+		}
+		else {
+			$pieces = explode('/', $date);
+			if (count($pieces) != 3) {
+				return false;
+			}
+			else {
+				$day = $pieces[1];
+				$month = $pieces[0];
+				$year = $pieces[2];
+				return checkdate($month, $day, $year);
+			}
+		}
 	}
 
 	private function validInteger($number)

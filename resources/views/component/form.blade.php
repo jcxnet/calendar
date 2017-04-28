@@ -41,7 +41,7 @@
                     success:function(data) {
                         if(data.status=='ok'){
                             //showCalendar(data.values);
-                            showAlert('success','Generating calendar','processing data...');
+                            showAlert('success','Generating calendar',data.values);
                         }else if(data.status == 'error'){
                             showAlert('danger','Verify the values' ,data.message);
                         }else{
