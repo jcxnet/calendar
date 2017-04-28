@@ -14,3 +14,11 @@
 $app->get('/', function () use ($app) {
     return view('index',['data'=>$app->version()]);
 });
+
+$app->post('/generate', [
+	'as' => 'calendar.generate', 'uses' => 'CalendarController@generate'
+]);
+
+$app->post('/alert', [
+	'as' => 'app.alert', 'uses' => 'CalendarController@alert'
+]);

@@ -1,5 +1,5 @@
 @extends('layout.master')
 @section('content')
-    <h1>Content</h1>
-    <p>{{$data}}</p>
+    @include('component.form')
+    @include('component.result')
 @endsection

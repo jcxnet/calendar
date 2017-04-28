@@ -20,5 +20,6 @@
     </div>
 <script src="{{ app('url')->asset('js/jquery-3.2.1.min.js')  }}"></script>
 <script src="{{ app('url')->asset('js/bootstrap.min.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
