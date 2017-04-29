@@ -16,10 +16,22 @@ trait ValidateForm {
 	 * @return bool
 	 */
 	private $countryCodes = ['AR','AO','AT','AU','AW','BE','BG','BO','BR','CA','CH','CN','CO','CZ','DE','DK','DO','EC','ES','FI','FR','GB','GB-ENG','GB-NIR','GB-SCT','GB-WLS','GR','GT','HK','HN','HR','HU','ID','IE','IN','IL','IT','JP','KZ','LS','LU','MG','MQ','MT','MU','MX','MZ','NL','NO','PE','PK','PH','PL','PR','PT','PY','RE','RU','SC','SE','SG','SI','ST','SK','TN','TR','UA','US','UY','VE',];
+	/**
+	 * @var bool
+	 */
 	public $hasError = false;
+	/**
+	 * @var array
+	 */
 	public $messages = [];
+	/**
+	 * @var array
+	 */
 	public $data = [];
 
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 */
 	public function formIsValid(Request $request)
 	{
 		$this->extractInputs($request);
@@ -47,12 +59,21 @@ trait ValidateForm {
 		}
 	}
 
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 */
 	private function extractInputs(Request $request)
 	{
 		$this->data['date'] = $request->input('date');
 		$this->data['days'] = $request->input('days');
 		$this->data['code'] = $request->input('code');
 	}
+
+	/**
+	 * @param $date
+	 *
+	 * @return bool
+	 */
 	private function validDate($date)
 	{
 		if (preg_match("/([1-9]|1[0-2])\/([1-9]|[1-2][0-9]|3[0-1])\/([0-9]{4})/", $date, $matches)) {
@@ -65,6 +86,11 @@ trait ValidateForm {
 		}
 	}
 
+	/**
+	 * @param $number
+	 *
+	 * @return bool
+	 */
 	private function validInteger($number)
 	{
 		$options = array(
@@ -76,6 +102,11 @@ trait ValidateForm {
 		return (filter_var($number, FILTER_VALIDATE_INT, $options) !== false);
 	}
 
+	/**
+	 * @param $code
+	 *
+	 * @return bool
+	 */
 	private function validCountryCode($code)
 	{
 		return (in_array(mb_strtoupper($code),$this->countryCodes,true));

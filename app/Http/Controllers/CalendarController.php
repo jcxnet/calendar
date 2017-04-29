@@ -2,19 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ApiHolidays;
 use Illuminate\Http\Request;
 use App\Traits\CalculateDays;
 use App\Traits\ValidateForm;
 
+/**
+ * Class CalendarController
+ *
+ * @package App\Http\Controllers
+ */
 class CalendarController extends Controller
 {
-	use CalculateDays, ValidateForm;
+	use CalculateDays, ValidateForm, ApiHolidays;
 
-    public function generate(Request $request)
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 *
+	 * @return bool|\Illuminate\Http\JsonResponse
+	 */
+	public function generate(Request $request)
     {
-
+	    if($request->ajax()){
+		    $date = $request->input('date');
+		    $days = $request->input('days');
+		    $code = $request->input('code');
+			$this->setValues(['date'=>$date,'days' => $days,'code' => $code]);
+			$holidays = $this->getHolidays($this->getYears(),$code);
+			$this->setHolidays($holidays);
+			dd($this->getMonthList());
+		    $view = view('calendars',['months' => $this->getMonthList() ])->render();
+		    //return response()->json(['status'=>'ok','html'=>$view]);
+		    return true;
+	    }else{
+		    $message = ['status' => 'error',  'message' => 'Invalid request'];
+		    return response()->json($message);
+	    }
     }
 
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
 	public function validation(Request $request)
     {
     	if($request->ajax()){
@@ -32,7 +62,12 @@ class CalendarController extends Controller
 	    }
     }
 
-    public function alert(Request $request)
+	/**
+	 * @param \Illuminate\Http\Request $request
+	 *
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function alert(Request $request)
     {
 	    if($request->ajax()){
 			$type = mb_strtolower($request->input('type'));
@@ -46,7 +81,12 @@ class CalendarController extends Controller
 	    }
     }
 
-    private function formatMessage($messages)
+	/**
+	 * @param $messages
+	 *
+	 * @return string
+	 */
+	private function formatMessage($messages)
     {
     	if($messages!=''){
     		if(is_array($messages)){
