@@ -21,7 +21,7 @@
 }
 
 .header-day{
-    width: 13.3%;
+    width: 13.2%;
     display: inline-block;
     height: 50px;
     font-size: 1.6em;
@@ -36,7 +36,7 @@
 }
 
 .month-day{
-    width: 13.3%;
+    width: 13.2%;
     display: inline-block;
     line-height: 40px;
     font-size: 1.1em;
