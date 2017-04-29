@@ -55,20 +55,13 @@ trait ValidateForm {
 	}
 	private function validDate($date)
 	{
-		if (strlen($date) > 10) {
+		if (preg_match("/([1-9]|1[0-2])\/([1-9]|[1-2][0-9]|3[0-1])\/([0-9]{4})/", $date, $matches)) {
+			$day = $matches[2];
+			$month = $matches[1];
+			$year = $matches[3];
+			return (checkdate($month, $day, $year));
+		}else{
 			return false;
-		}
-		else {
-			$pieces = explode('/', $date);
-			if (count($pieces) != 3) {
-				return false;
-			}
-			else {
-				$day = $pieces[1];
-				$month = $pieces[0];
-				$year = $pieces[2];
-				return checkdate($month, $day, $year);
-			}
 		}
 	}
 

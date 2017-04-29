@@ -12,11 +12,15 @@
 */
 
 $app->get('/', function () use ($app) {
-    return view('index',['data'=>$app->version()]);
+    return view('index');
 });
 
 $app->post('/generate', [
 	'as' => 'calendar.generate', 'uses' => 'CalendarController@generate'
+]);
+
+$app->post('/validate', [
+	'as' => 'calendar.validate', 'uses' => 'CalendarController@validation'
 ]);
 
 $app->post('/alert', [

@@ -12,6 +12,11 @@ class CalendarController extends Controller
 
     public function generate(Request $request)
     {
+
+    }
+
+	public function validation(Request $request)
+    {
     	if($request->ajax()){
 			$this->formIsValid($request);
 			if($this->hasError){
