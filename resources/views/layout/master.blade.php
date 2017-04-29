@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Calendar - exercise</title>
     <link href="{{app('url')->asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{app('url')->asset('css/tippy.css')}}" rel="stylesheet">
+    <link href="{{app('url')->asset('css/calendar.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{app('url')->asset('js/html5shiv.min.js')}}"></script>
     <script src="{{app('url')->asset('js/respond.min.js')}}"></script>
@@ -20,6 +22,7 @@
     </div>
 <script src="{{ app('url')->asset('js/jquery-3.2.1.min.js')  }}"></script>
 <script src="{{ app('url')->asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ app('url')->asset('js/tippy.min.js') }}"></script>
 @stack('scripts')
 </body>
 </html>

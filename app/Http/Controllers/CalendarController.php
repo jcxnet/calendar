@@ -30,9 +30,8 @@ class CalendarController extends Controller
 			$this->setValues(['date'=>$date,'days' => $days,'code' => $code]);
 			$holidays = $this->getHolidays($this->getYears(),$code);
 			$this->setHolidays($holidays);
-			dd($this->getMonthList());
-		    $view = view('calendars',['months' => $this->getMonthList() ])->render();
-		    //return response()->json(['status'=>'ok','html'=>$view]);
+		    $view = view('calendar',['months' => $this->getMonthList() ])->render();
+		    return response()->json(['status'=>'ok','html'=>$view]);
 		    return true;
 	    }else{
 		    $message = ['status' => 'error',  'message' => 'Invalid request'];

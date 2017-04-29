@@ -71,7 +71,23 @@
                 method: "post",
                 success:function(data) {
                     $('#results').html(data.html);
+                    setTooltips();
                 },
+            });
+        }
+
+        function setTooltips(){
+            new Tippy('.day-tooltip', {
+                position: 'top',
+                size:'big',
+                theme:'light',
+                popperOptions: {
+                    modifiers: {
+                        flip: {
+                            behavior: ['right', 'bottom']
+                        }
+                    }
+                }
             });
         }
     </script>

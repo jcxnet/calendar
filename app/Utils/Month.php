@@ -146,6 +146,20 @@ class Month
 		}
 	}
 
+
+	/**
+	 * @param $day
+	 *
+	 * @return mixed|string
+	 */
+	public function getHoliday($day)
+	{
+		if(array_key_exists($day,$this->holidays)){
+			return $this->holidays[$day];
+		}
+		return false;
+	}
+
 	/**
 	 * @param $year
 	 * @param $month

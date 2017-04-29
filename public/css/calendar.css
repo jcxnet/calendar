@@ -1,0 +1,74 @@
+#results{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.month{
+    width: 350px;
+    margin: 10px;
+    padding: 0;
+    float: left;
+}
+
+.month-title{
+    font-size: 1.8em;
+}
+.header-days{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.header-day{
+    width: 13.3%;
+    display: inline-block;
+    height: 50px;
+    font-size: 1.6em;
+    text-align: center;
+    border: none;
+}
+
+.month-week{
+    width: 100%;
+    margin: 3px 0;
+    padding: 0;
+}
+
+.month-day{
+    width: 13.3%;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.day-grey{
+    background: #CBCBCB;
+    border: 1px solid #B8B8B8;
+}
+
+.day-holiday{
+    background: #FDAA26;
+    border: 1px solid #F7600F;
+}
+
+.day-sun, .day-sat{
+    background-color: #F8FF1F;
+    border: 1px solid #CBD113;
+}
+
+.day-mon, .day-tue, .day-wed, .day-thu, .day-fri{
+    background-color: #7CEB28;
+    border:1px solid #5AAD1C;
+}
+
+.day-holiday-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.day-holiday-link:hover, .day-holiday-link:link{
+    text-decoration: none;
+    color: inherit;
+}
